@@ -34,4 +34,8 @@ func main() {
 	calc.RomanToInteger("III")
 	calc.RomanToInteger("LVIII")
 	calc.RomanToInteger("MCMXCIV")
+
+	fmt.Println("------------------------ Longest common prefix")
+	fmt.Println("Prefix = ", strs.LongestCommonPrefix([]string{"flower", "flow", "flight"}))
+	fmt.Println("Prefix = ", strs.LongestCommonPrefix([]string{"dog", "racecar", "car"}))
 }
