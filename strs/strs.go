@@ -47,7 +47,7 @@ func LongestCommonPrefix(strs []string) string {
 
 		letterProcessed := false
 
-		for i := 0; i < len(strs); i++ {
+		for i := 0; i < wordCount; i++ {
 			currentStr := strs[i]
 
 			if len(currentStr) >= next {
