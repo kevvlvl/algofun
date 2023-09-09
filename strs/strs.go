@@ -40,6 +40,8 @@ func LongestCommonPrefix(strs []string) string {
 
 	m := make(map[string]int)
 	next := 1
+	prefix := ""
+	wordCount := len(strs)
 
 	for {
 
@@ -50,7 +52,12 @@ func LongestCommonPrefix(strs []string) string {
 
 			if len(currentStr) >= next {
 				letterProcessed = true
-				m[currentStr[0:next]]++
+				p := currentStr[0:next]
+				m[p]++
+
+				if m[p] == wordCount && len(p) > len(prefix) {
+					prefix = p
+				}
 			}
 		}
 
@@ -58,15 +65,6 @@ func LongestCommonPrefix(strs []string) string {
 			next++
 		} else {
 			break
-		}
-	}
-
-	prefix := ""
-	wordCount := len(strs)
-	for key, val := range m {
-
-		if val == wordCount && len(key) > len(prefix) {
-			prefix = key
 		}
 	}
 
