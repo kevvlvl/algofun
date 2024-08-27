@@ -1,7 +1,6 @@
 package lists
 
 import (
-	"fmt"
 	"math/big"
 )
 
@@ -65,8 +64,6 @@ func MergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 
 func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
-	// TODO: convert to big int. See https://pkg.go.dev/math/big
-
 	l1Number := big.NewInt(0)
 	var i int64 = 0
 	for l1 != nil {
@@ -77,8 +74,6 @@ func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		m.Mul(big.NewInt(int64(l1.Val)), e)
 
 		l1Number.Add(l1Number, m)
-
-		fmt.Println("l1 = ", l1.Val, " - i = ", i, " - sum = ", l1Number)
 		i++
 
 		l1 = l1.Next
@@ -94,8 +89,6 @@ func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		m.Mul(big.NewInt(int64(l2.Val)), e)
 
 		l2Number.Add(l2Number, m)
-
-		fmt.Println("l2 = ", l2.Val, " - j = ", j, " - sum = ", l2Number)
 		j++
 
 		l2 = l2.Next
@@ -103,8 +96,6 @@ func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 	a := big.NewInt(0)
 	a.Add(l1Number, l2Number)
-
-	fmt.Println("Resulting number = ", a)
 
 	rem := big.NewInt(0)
 	rem.Mod(a, big.NewInt(10))
