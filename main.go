@@ -59,9 +59,29 @@ func main() {
 	}
 
 	merged := lists.MergeTwoLists(&n1, &n2)
-
 	for merged != nil {
 		fmt.Println("Var: ", merged.Val)
 		merged = merged.Next
+	}
+
+	fmt.Println("------------------------ Add Two Numbers")
+
+	a1 := lists.ListNode{
+		Val: 5,
+		Next: &lists.ListNode{
+			Val:  0,
+			Next: &lists.ListNode{Val: 5},
+		},
+	}
+
+	a2 := lists.ListNode{
+		Val:  1,
+		Next: &lists.ListNode{Val: 9},
+	}
+
+	added := lists.AddTwoNumbers(&a1, &a2)
+	for added != nil {
+		fmt.Println("Addition: ", added.Val)
+		added = added.Next
 	}
 }
