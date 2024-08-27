@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"leetcode_playground/calc"
+	"leetcode_playground/lists"
 	"leetcode_playground/strs"
 )
 
@@ -38,4 +39,29 @@ func main() {
 	fmt.Println("------------------------ Longest common prefix")
 	fmt.Println("Prefix = ", strs.LongestCommonPrefix([]string{"flower", "flow", "flight"}))
 	fmt.Println("Prefix = ", strs.LongestCommonPrefix([]string{"dog", "racecar", "car"}))
+
+	fmt.Println("------------------------ Merge Two Sorted Lists")
+
+	n1 := lists.ListNode{
+		Val: 1,
+		Next: &lists.ListNode{
+			Val:  2,
+			Next: &lists.ListNode{Val: 40},
+		},
+	}
+
+	n2 := lists.ListNode{
+		Val: 15,
+		Next: &lists.ListNode{
+			Val:  40,
+			Next: &lists.ListNode{Val: 45},
+		},
+	}
+
+	merged := lists.MergeTwoLists(&n1, &n2)
+
+	for merged != nil {
+		fmt.Println("Var: ", merged.Val)
+		merged = merged.Next
+	}
 }
