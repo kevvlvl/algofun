@@ -66,18 +66,41 @@ func main() {
 
 	fmt.Println("------------------------ Add Two Numbers")
 
-	a1 := lists.ListNode{
-		Val: 5,
-		Next: &lists.ListNode{
-			Val:  0,
-			Next: &lists.ListNode{Val: 5},
-		},
-	}
+	a1 := lists.ListNode{Val: 5}
+	n := a1.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(0)
+	n = n.InsertEnd(1)
 
-	a2 := lists.ListNode{
-		Val:  1,
-		Next: &lists.ListNode{Val: 9},
-	}
+	a2 := lists.ListNode{Val: 1}
+	a2.InsertEnd(5)
 
 	added := lists.AddTwoNumbers(&a1, &a2)
 	for added != nil {

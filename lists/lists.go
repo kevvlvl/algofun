@@ -2,7 +2,7 @@ package lists
 
 import (
 	"fmt"
-	"math"
+	"math/big"
 )
 
 type ListNode struct {
@@ -66,47 +66,67 @@ func MergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 	// TODO: convert to big int. See https://pkg.go.dev/math/big
-	//var l1Big big.Int
-	//var l2Big big.Int
 
-	l1Number := float64(0)
-	i := 0
+	l1Number := big.NewInt(0)
+	var i int64 = 0
 	for l1 != nil {
 
-		l1Number += float64(l1.Val) * math.Pow10(i)
+		e := big.NewInt(0)
+		e.Exp(big.NewInt(10), big.NewInt(i), nil)
+		m := big.NewInt(0)
+		m.Mul(big.NewInt(int64(l1.Val)), e)
+
+		l1Number.Add(l1Number, m)
+
 		fmt.Println("l1 = ", l1.Val, " - i = ", i, " - sum = ", l1Number)
 		i++
 
 		l1 = l1.Next
 	}
 
-	l2Number := float64(0)
-	j := 0
+	l2Number := big.NewInt(0)
+	var j int64 = 0
 	for l2 != nil {
 
-		l2Number += float64(l2.Val) * math.Pow10(j)
+		e := big.NewInt(0)
+		e.Exp(big.NewInt(10), big.NewInt(j), nil)
+		m := big.NewInt(0)
+		m.Mul(big.NewInt(int64(l2.Val)), e)
+
+		l2Number.Add(l2Number, m)
+
 		fmt.Println("l2 = ", l2.Val, " - j = ", j, " - sum = ", l2Number)
 		j++
 
 		l2 = l2.Next
 	}
 
-	resultAddition := l1Number + l2Number
-	fmt.Println("Resulting number = ", resultAddition)
+	a := big.NewInt(0)
+	a.Add(l1Number, l2Number)
 
-	rHead := &ListNode{Val: int(math.Mod(resultAddition, 10))}
-	resultAddition = float64(int(resultAddition / 10))
+	fmt.Println("Resulting number = ", a)
 
-	if resultAddition > 0 {
+	rem := big.NewInt(0)
+	rem.Mod(a, big.NewInt(10))
+
+	rHead := &ListNode{Val: int(rem.Int64())}
+
+	a.Div(a, big.NewInt(10))
+	zero := big.NewInt(0)
+
+	if a.Cmp(zero) > 0 {
 		r := &ListNode{}
 		rHead.Next = r
 
-		for resultAddition > 0 {
+		for a.Cmp(zero) > 0 {
 
-			r.Val = int(math.Mod(resultAddition, 10))
-			resultAddition = float64(int(resultAddition / 10))
+			rem = big.NewInt(0)
+			rem.Mod(a, big.NewInt(10))
 
-			if resultAddition > 0 {
+			r.Val = int(rem.Int64())
+			a.Div(a, big.NewInt(10))
+
+			if a.Cmp(zero) > 0 {
 				r.Next = &ListNode{}
 				r = r.Next
 			}
@@ -114,4 +134,12 @@ func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 
 	return rHead
+}
+
+func (l *ListNode) InsertEnd(v int) *ListNode {
+
+	node := &ListNode{Val: v}
+	l.Next = node
+
+	return l.Next
 }
