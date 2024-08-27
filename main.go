@@ -104,7 +104,11 @@ func main() {
 
 	added := lists.AddTwoNumbers(&a1, &a2)
 	for added != nil {
-		fmt.Println("Addition: ", added.Val)
+		fmt.Print("Addition: ", added.Val)
 		added = added.Next
+
+		if added != nil {
+			fmt.Print("->")
+		}
 	}
 }
