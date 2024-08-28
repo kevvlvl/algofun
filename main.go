@@ -111,4 +111,12 @@ func main() {
 			fmt.Print("->")
 		}
 	}
+
+	fmt.Println("------------------------ Remove duplicates from Sorted Array")
+
+	numsdups := []int{1, 1, 2, 2}
+
+	size := lists.RemoveDuplicates(numsdups)
+
+	fmt.Println("Unique amount of digits: ", size, " - Array: ", numsdups)
 }

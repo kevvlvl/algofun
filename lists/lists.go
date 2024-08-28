@@ -134,3 +134,26 @@ func (l *ListNode) InsertEnd(v int) *ListNode {
 
 	return l.Next
 }
+
+func RemoveDuplicates(nums []int) int {
+
+	i := 0
+
+	// ASSUMPTION: int array is sorted. Traverse the array, and shift unique digits to the left
+	for j := 0; j < len(nums); j++ {
+
+		if nums[i] != nums[j] {
+			i++
+
+			// shift number to the left
+			nums[i] = nums[j]
+		}
+	}
+
+	for j := i + 1; j < len(nums); j++ {
+		nums[j] = -1000
+	}
+
+	// i represents the unique amount of digits that were left shifted
+	return i + 1
+}
