@@ -1,5 +1,7 @@
 package strs
 
+import "strings"
+
 var (
 	openParenthesis  = "("[0]
 	closeParenthesis = ")"[0]
@@ -69,4 +71,14 @@ func LongestCommonPrefix(strs []string) string {
 	}
 
 	return prefix
+}
+
+// GetIndexForStr is an implementation of "strstr"
+func GetIndexForStr(haystack string, needle string) int {
+
+	if len(haystack) > 0 {
+		return strings.Index(haystack, needle)
+	}
+
+	return -1
 }

@@ -127,4 +127,9 @@ func main() {
 	kept := lists.RemoveElement(nums, 2)
 
 	fmt.Println("Amount of digits kept: ", kept, " - Array: ", nums)
+
+	fmt.Println("------------------------ Find Index of First occurrence of str")
+
+	idx := strs.GetIndexForStr("Good news everyone!", "Good")
+	fmt.Println("Found str at index: ", idx)
 }
