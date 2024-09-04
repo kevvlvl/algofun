@@ -132,4 +132,9 @@ func main() {
 
 	idx := strs.GetIndexForStr("Good news everyone!", "Good")
 	fmt.Println("Found str at index: ", idx)
+
+	fmt.Println("------------------------ Search insert position in array")
+
+	idx = lists.SearchInsert([]int{1, 2, 3, 4}, 3)
+	fmt.Println("Ideal index: ", idx)
 }
