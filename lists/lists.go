@@ -2,6 +2,7 @@ package lists
 
 import (
 	"math/big"
+	"slices"
 )
 
 type ListNode struct {
@@ -156,4 +157,21 @@ func RemoveDuplicates(nums []int) int {
 
 	// i represents the unique amount of digits that were left shifted
 	return i + 1
+}
+
+func RemoveElement(nums []int, val int) int {
+
+	removed := 0
+
+	for i := 0; i < len(nums); i++ {
+
+		if nums[i] == val {
+			nums[i] = 1000
+			removed++
+		}
+	}
+
+	slices.Sort(nums)
+
+	return len(nums) - removed
 }
