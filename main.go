@@ -137,4 +137,10 @@ func main() {
 
 	idx = lists.SearchInsert([]int{1, 2, 3, 4}, 3)
 	fmt.Println("Ideal index: ", idx)
+
+	fmt.Println("------------------------ Length of Last Word")
+
+	s := "Hello my   darling     vampire     "
+	l := strs.LengthOfLastWord(s)
+	fmt.Println("Length of last word: ", l)
 }

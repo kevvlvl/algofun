@@ -1,6 +1,9 @@
 package strs
 
-import "strings"
+import (
+	"regexp"
+	"strings"
+)
 
 var (
 	openParenthesis  = "("[0]
@@ -81,4 +84,18 @@ func GetIndexForStr(haystack string, needle string) int {
 	}
 
 	return -1
+}
+
+func LengthOfLastWord(s string) int {
+
+	if strings.IndexAny(s, " ") < 0 {
+		return len(s)
+	}
+
+	s = strings.Trim(s, " ")
+
+	rx := regexp.MustCompile("\\s+")
+	tokens := rx.Split(s, -1)
+
+	return len(tokens[len(tokens)-1])
 }
