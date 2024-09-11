@@ -1,6 +1,7 @@
 package lists
 
 import (
+	"fmt"
 	"math/big"
 	"slices"
 )
@@ -199,4 +200,45 @@ func SearchInsert(nums []int, target int) int {
 	}
 
 	return idealIndex
+}
+
+func PlusOne(digits []int) []int {
+
+	lastDigit := digits[len(digits)-1]
+	increment := lastDigit + 1
+
+	fmt.Println("Last digit: ", lastDigit, " - Increment: ", increment)
+
+	if increment < 10 {
+		digits[len(digits)-1] = increment
+	} else {
+
+		addOne := true
+		for i := len(digits) - 1; i >= 0 && addOne; i-- {
+
+			currentDigit := digits[i]
+
+			if currentDigit < 9 {
+				digits[i] = digits[i] + 1
+				addOne = false
+			} else {
+				digits[i] = 0
+			}
+		}
+
+		// if true, we need to push a 1 in front of our digits. Example. [9] => [1, 0], [9,9] => [1,0,0]
+		if addOne {
+			newDigits := make([]int, len(digits)+1)
+			newDigits[0] = 1
+			for j := 1; j < len(newDigits); j++ {
+				newDigits[j] = digits[j-1]
+			}
+
+			digits = newDigits
+		}
+
+		fmt.Println("addOne: ", addOne)
+	}
+
+	return digits
 }
